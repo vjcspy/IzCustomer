@@ -1,0 +1,15 @@
+{
+    "name": "IzCustomer",
+    "alias": "izcustomer",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\IzCustomer\\Providers\\IzCustomerServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}
