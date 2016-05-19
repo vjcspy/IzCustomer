@@ -6,7 +6,7 @@
  * Time: 17:39
  */
 
-namespace Modules\IzCustomer\Http\Controllers\Login;
+namespace Modules\IzCustomer\Http\Controllers\Authentication;
 
 
 use Cartalyst\Sentinel\Sentinel;
@@ -90,6 +90,9 @@ class FacebookController extends BasicController {
                     // update relationship
                     $userSentinel->facebook()->save($facebookUser);
                 }
+                // Login and remember to sentinel
+                $this->sentinel->loginAndRemember($userSentinel);
+
                 // set output
                 $this->setResponseData($userSentinel->toArray());
             }

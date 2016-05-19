@@ -3,6 +3,6 @@
 Route::group(
     ['middleware' => 'web', 'prefix' => 'izcustomer', 'namespace' => 'Modules\IzCustomer\Http\Controllers'],
     function () {
-        Route::controller('/login', 'Login\LoginController');
-        Route::controller('/facebook', 'Login\FacebookController');
+        Route::controller('/account', 'Authentication\AccountController');
+        Route::controller('/facebook', 'Authentication\FacebookController');
     });
