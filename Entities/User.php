@@ -19,4 +19,13 @@ class User extends EloquentUser {
     public function facebook() {
         return $this->hasOne('Modules\IzCustomer\Entities\FacebookUser');
     }
+
+    /**
+     * Relationship function
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userCustomData() {
+        return $this->hasMany('Modules\IzCustomer\Entities\UserCustomData');
+    }
 }
