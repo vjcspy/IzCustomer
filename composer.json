@@ -11,6 +11,8 @@
   ],
   "require": {
     "php": ">=5.5.9",
+    "cartalyst/sentinel": "2.0.*",
+    "sammyk/laravel-facebook-sdk": "^3.3",
     "composer/installers": "^1.0"
   },
   "autoload": {
