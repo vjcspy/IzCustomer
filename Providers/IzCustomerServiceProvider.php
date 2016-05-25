@@ -29,6 +29,7 @@ class IzCustomerServiceProvider extends ServiceProvider {
      */
     public function register() {
         //
+        $this->registerDependencyLibrary();
     }
 
     /**
