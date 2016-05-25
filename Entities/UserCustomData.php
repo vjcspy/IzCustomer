@@ -33,4 +33,23 @@ class UserCustomData extends Model {
                         ])
                     ->get();
     }
+
+    /**
+     * @param                                   $data
+     * @param \Modules\IzCustomer\Entities\User $user
+     *
+     * @return \Illuminate\Database\Eloquent\Model|static
+     */
+    public function updateOrCreateCustomDataByUser($data, User $user) {
+        if (isset($data['id'])) {
+            $customData = $this->query()->firstOrFail(['id' => $data['id']]);
+            $customData->update($data);
+        }
+        else {
+            /* Updating "Belongs To" Relationships */
+            $customData = $user->userCustomData()->create($data);
+        }
+
+        return $customData;
+    }
 }
