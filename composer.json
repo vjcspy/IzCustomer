@@ -25,6 +25,5 @@
      "installer-paths": {
             "modules/{$name}/": ["type:magento-library"]
         }
-  },
-  "minimum-stability": "dev"
+  }
 }
