@@ -94,4 +94,8 @@ class IzCustomerServiceProvider extends ServiceProvider {
 		return array();
 	}
 
+	public function registerDependencyLibrary(){
+		/*Sentinel*/
+		$this->app->register(\SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class);
+	}
 }
