@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "laravel-pingpong-modules/izcore": "^0.1",
+    "laravel-pingpong-modules/izcore": "^0.0.1",
     "cartalyst/sentinel": "2.0.*",
     "sammyk/laravel-facebook-sdk": "^3.3",
     "composer/installers": "^1.0"
