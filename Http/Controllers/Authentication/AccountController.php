@@ -83,4 +83,17 @@ class AccountController extends BasicController {
 
         return $this->responseJson();
     }
+
+    public function getLogout() {
+        try {
+            if (!!($user = $this->sentinel->check()))
+                $this->setResponseData($this->sentinel->logout(null, true));
+            else
+                throw new \Exception("Can't get current user");
+        } catch (\Exception $e) {
+            $this->setErrorData($e->getMessage());
+        }
+
+        return $this->responseJson();
+    }
 }
