@@ -56,7 +56,7 @@ class UserCustomData extends Model {
         return $customData;
     }
 
-    public function postRemoveCustomDataById($id, User $user) {
-        return $user->userCustomData()->detach($id);
+    public function removeCustomDataById($id, User $user) {
+        return $this->query()->where('id', $id)->delete();
     }
 }

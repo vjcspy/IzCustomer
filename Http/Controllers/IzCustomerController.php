@@ -50,7 +50,7 @@ class IzCustomerController extends BasicController {
         try {
             $requestData = $this->getRequestData($request);
             if (isset($requestData['name']) && !!$requestData['name'] && !!($user = $this->sentinel->check()))
-                $this->setResponseData($this->userCustomerDataModel->getCustomDataCustomerByName($requestData['name'], $user->getUserId()));
+                $this->setResponseData($this->convertCustomData($this->userCustomerDataModel->getCustomDataCustomerByName($requestData['name'], $user->getUserId())));
             else
                 throw new \Exception("Can't get custom data");
 
@@ -73,7 +73,7 @@ class IzCustomerController extends BasicController {
             $data = $this->getRequestData($request);
 
             if (!!($user = $this->sentinel->check()))
-                $this->setResponseData($this->userCustomerDataModel->updateOrCreateCustomDataByUser($data, $user));
+                $this->setResponseData($this->convertCustomData($this->userCustomerDataModel->updateOrCreateCustomDataByUser($data, $user)));
             else
                 throw new \Exception("Can't get current user");
         } catch (\Exception $e) {
@@ -96,5 +96,28 @@ class IzCustomerController extends BasicController {
         }
 
         return $this->responseJson();
+    }
+
+    private function convertCustomData($customData) {
+        /*
+         * Neu chi la 1 row 
+         */
+        if (isset($customData['id'])) {
+            if (is_string($customData['value'])) {
+                $customData['value'] = json_decode($customData['value'], true);
+            }
+        }
+        else {
+            /*
+             * Multiple row
+             * */
+            foreach ($customData as $key => $data) {
+                $data['value']    = json_decode($data['value'], true);
+                $customData[$key] = $data;
+            }
+
+        }
+
+        return $customData;
     }
 }
