@@ -82,4 +82,19 @@ class IzCustomerController extends BasicController {
 
         return $this->responseJson();
     }
+
+    public function postRemoveCustomDataById(Request $request) {
+        try {
+            $data = $this->getRequestData($request);
+
+            if (!!($user = $this->sentinel->check()))
+                $this->setResponseData($this->userCustomerDataModel->removeCustomDataById($data['id'], $user));
+            else
+                throw new \Exception("Can't get current user");
+        } catch (\Exception $e) {
+            $this->setErrorData($e->getMessage());
+        }
+
+        return $this->responseJson();
+    }
 }
