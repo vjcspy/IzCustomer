@@ -41,6 +41,9 @@ class UserCustomData extends Model {
      * @return \Illuminate\Database\Eloquent\Model|static
      */
     public function updateOrCreateCustomDataByUser($data, User $user) {
+        if (is_array($data['value']))
+            $data['value'] = json_encode($data['value']);
+
         if (isset($data['id'])) {
             $customData = $this->query()->firstOrFail(['id' => $data['id']]);
             $customData->update($data);

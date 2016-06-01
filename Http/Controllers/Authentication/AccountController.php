@@ -11,6 +11,7 @@ namespace Modules\IzCustomer\Http\Controllers\Authentication;
 
 use Cartalyst\Sentinel\Sentinel;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Modules\IzCore\Http\Controllers\Api\BasicController;
 use Modules\IzCustomer\Http\Requests\CredentialsRequest;
 use Response;
@@ -55,7 +56,7 @@ class AccountController extends BasicController {
         return $this->responseJson();
     }
 
-    public function postLogin(CredentialsRequest $request) {
+    public function postLogin(Request $request) {
         if ($user = $this->sentinel->authenticateAndRemember($this->getRequestData($request))) {
             $this->setResponseData(
                 [

@@ -33,6 +33,7 @@ class CredentialsRequest extends FormRequest {
     public function messages() {
         return [
             'email.required'    => 'Email là bắt buộc',
+            'email.unique'    => 'Email đã tồn tại',
             'password.required' => 'Mật khẩu là bắt buộc',
         ];
     }
