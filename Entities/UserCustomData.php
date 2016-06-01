@@ -45,7 +45,7 @@ class UserCustomData extends Model {
             $data['value'] = json_encode($data['value']);
 
         if (isset($data['id'])) {
-            $customData = $this->query()->firstOrFail(['id' => $data['id']]);
+            $customData = $this->query()->where(['id' => $data['id']])->firstOrFail();
             $customData->update($data);
         }
         else {
