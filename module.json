@@ -6,7 +6,8 @@
     "active": 1,
     "order": 0,
     "providers": [
-        "Modules\\IzCustomer\\Providers\\IzCustomerServiceProvider"
+        "Modules\\IzCustomer\\Providers\\IzCustomerServiceProvider",
+        "Modules\\IzCustomer\\Providers\\IzAdmin\\AddCustomAssetsProvider"
     ],
     "aliases":{},
     "files": [
