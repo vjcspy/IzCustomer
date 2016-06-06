@@ -1,8 +1,5 @@
-/**
- * Created by vjcspy on 3/19/16.
- */
 (function (angular) {
-    angular.module('stockboardApp')
+    angular.module('app')
            .service('izFacebookApi', [
                '$http', 'urlManagement',
                function ($http, urlManagement) {

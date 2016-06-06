@@ -1,7 +1,4 @@
-/**
- * Created by vjcspy on 3/18/16.
- */
-angular.module('stockboardApp')
+angular.module('app')
        .service('facebookAuth', [
            '$http', '$q', 'urlManagement', 'IzSentinel',
            function ($http, $q, urlManagement, IzSentinel) {

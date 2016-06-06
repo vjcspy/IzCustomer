@@ -1,17 +1,13 @@
-/**
- * Created by vjcspy on 19/05/2016.
- */
 (function (angular) {
     "use strict";
-    angular.module('stockboardApp')
+    angular.module('app')
            .service('IzSentinel', [
-               '$q', 'urlManagement', '$http', '$mdDialog', '$mdMedia', '$rootScope',
-               function ($q, urlManagement, $http, $mdDialog, $mdMedia, $rootScope) {
+               '$q', 'IzAdminConfigService', '$http', '$mdDialog', '$mdMedia', '$rootScope',
+               function ($q, IzAdminConfigService, $http, $mdDialog, $mdMedia, $rootScope) {
                    var vm = this;
-                   var loginUrl = urlManagement.getUrl('auth_account');
+                   var loginUrl = IzAdminConfigService.getConfig('base_url') + '/izcustomer/account';
                    var isLogged = false;
                    var userData = {};
-                   var customFullscreen = $mdMedia('xs') || $mdMedia('sm');
                    /*
                     * Check logged in to server. And save data if true
                     */
@@ -57,7 +53,7 @@
                    this.login = function (userData) {
                        var defer = $q.defer();
                        $http.post(loginUrl + '/login', userData).then(function (res) {
-                           if (res.data.logged) {
+                           if (res.data['logged']) {
                                isLogged = true;
                                userData = res.data['user_data'];
 
@@ -66,6 +62,8 @@
 
                                return defer.resolve(userData);
                            }
+                           else
+                               return defer.reject(false);
                        });
                        return defer.promise;
                    };
@@ -76,7 +74,7 @@
                    this.logout = function () {
                        var defer = $q.defer();
                        $http.get(loginUrl + '/logout').then(function (res) {
-                           if (!res.data.logged) {
+                           if (!res.data['logged']) {
                                isLogged = false;
                                userData = {};
 
@@ -114,28 +112,5 @@
                        userData = data;
                        return vm;
                    };
-
-                   this.openUserForm = function (ev) {
-                       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && customFullscreen;
-                       $mdDialog.show({
-                                          controller: 'UserDialogController',
-                                          templateUrl: './views/dialog/userForm.html',
-                                          parent: angular.element(document.body),
-                                          targetEvent: ev,
-                                          clickOutsideToClose: true,
-                                          fullscreen: useFullScreen
-                                      })
-                                .then(function (answer) {
-                                    console.log('You said the information was "' + answer + '".');
-                                }, function () {
-                                    console.log('You cancelled the dialog.');
-                                });
-                       $rootScope.$watch(function () {
-                           return $mdMedia('xs') || $mdMedia('sm');
-                       }, function (wantsFullScreen) {
-                           customFullscreen = (wantsFullScreen === true);
-                       });
-                   };
-
                }]);
 })(angular);
