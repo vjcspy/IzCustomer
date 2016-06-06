@@ -14,9 +14,14 @@ use Modules\IzCore\Repositories\Theme\Asset;
 
 class AddCustomAssetsProvider extends ServiceProvider {
 
-   
+    /**
+     * TODO: Example add custom assets
+     * @throws \Exception
+     */
     public function boot() {
-        app()['izAsset']->addCustomAssets(
+        /** @var Asset $izAsset */
+        $izAsset = app()['izAsset'];
+        $izAsset->addCustomAssets(
             'izadmin',
             [
                 'IzCustomerSentinel'               =>
