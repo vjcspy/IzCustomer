@@ -64,6 +64,8 @@
                            }
                            else
                                return defer.reject(false);
+                       },function (rej) {
+                           return defer.reject(rej);
                        });
                        return defer.promise;
                    };
