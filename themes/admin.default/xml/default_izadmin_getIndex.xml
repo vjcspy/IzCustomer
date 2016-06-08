@@ -1,17 +1,15 @@
 <?xml version="1.0" ?>
 <xml>
-    <assets>
-        <custom_assets>
-            <!--
-            - Ở đây không cần theme_name nếu custom asset đó nằm trong theme hiện tại.
-            - Còn có trường hợp custom asset lại nằm trong theme khác.
-            -->
-            <asset name="IzCustomerSentinel" source="scripts/services/core/izcustomer/authentication/izsentinel.js" dependency="" theme_name="admin.default"/>
-            <asset name="IzCustomerFacebookApi" source="scripts/services/core/izcustomer/facebook/api.js" dependency="" theme_name="admin.default"/>
-            <asset name="IzCustomerFacebookAuthentication" source="scripts/services/core/izcustomer/facebook/authentication.js" dependency="" theme_name="admin.default"/>
-        </custom_assets>
-    </assets>
-    <view-data>
+    <custom_assets>
+        <!--
+        - Ở đây không cần theme_name nếu custom asset đó nằm trong theme hiện tại.
+        - Còn có trường hợp custom asset lại nằm trong theme khác.
+        -->
+        <asset name="IzCustomerSentinel" source="scripts/services/core/izcustomer/authentication/izsentinel.js" dependency="" theme_name="admin.default"/>
+        <asset name="IzCustomerFacebookApi" source="scripts/services/core/izcustomer/facebook/api.js" dependency="" theme_name="admin.default"/>
+        <asset name="IzCustomerFacebookAuthentication" source="scripts/services/core/izcustomer/facebook/authentication.js" dependency="" theme_name="admin.default"/>
+    </custom_assets>
+    <view_data>
         <instance name="\Modules\IzCustomer\Repositories\Theme\View\IzAdmin\Index"/>
-    </view-data>
+    </view_data>
 </xml>
