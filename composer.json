@@ -1,6 +1,6 @@
 {
-  "name": "laravel-pingpong-modules/izcustomer",
-  "vendor":"laravel-pingpong-modules",
+  "name": "vjcspy/izcustomer",
+  "vendor":"vjcspy",
   "type": "magento-library",
   "description": "",
   "authors": [
