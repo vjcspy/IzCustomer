@@ -18,7 +18,7 @@ use Response;
 
 class AccountController extends BasicController {
 
-    use ValidatesRequests;
+    //use ValidatesRequests;
 
     /**
      * @var \Cartalyst\Sentinel\Sentinel
